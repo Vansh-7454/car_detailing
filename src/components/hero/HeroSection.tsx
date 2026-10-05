@@ -67,6 +67,7 @@ const TICKER_SERVICES = [
 export default function HeroSection() {
   // ONE SINGLE SOURCE OF TRUTH for both text and image
   const [activeIndex, setActiveIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState<number | null>(null);
 
   // Synchronized continuous cycling: ~2.2s active state + ~0.5s transition = 2.7s total cycle
   useEffect(() => {
@@ -80,7 +81,10 @@ export default function HeroSection() {
     });
 
     const timer = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % HERO_STATES.length);
+      setActiveIndex((curr) => {
+        setPrevIndex(curr);
+        return (curr + 1) % HERO_STATES.length;
+      });
     }, 2700);
 
     return () => clearInterval(timer);
@@ -99,12 +103,19 @@ export default function HeroSection() {
             <div className={styles.textStage}>
               {HERO_STATES.map((state, idx) => {
                 const isActive = idx === activeIndex;
+                const isOutgoing = idx === prevIndex;
+
+                let slideStatusClass = styles.textIdle;
+                if (isActive) {
+                  slideStatusClass = styles.textActive;
+                } else if (isOutgoing) {
+                  slideStatusClass = styles.textOutgoing;
+                }
+
                 return (
                   <div
                     key={state.id}
-                    className={`${styles.textSlide} ${
-                      isActive ? styles.textActive : styles.textInactive
-                    }`}
+                    className={`${styles.textSlide} ${slideStatusClass}`}
                     aria-hidden={!isActive}
                   >
                     {/* Rock-solid Eyebrow Container: Fixed position, never jumps vertically */}
@@ -115,7 +126,7 @@ export default function HeroSection() {
                       </div>
                     </div>
 
-                    {/* Headline */}
+                    {/* Headline Wrapper: Stable min-height reserves space and prevents layout reflow */}
                     <div className={styles.heroTitleWrapper}>
                       <h1 className={styles.heroTitle}>
                         <span className={styles.titleDominant}>{state.headlineFirst}</span>
@@ -123,7 +134,7 @@ export default function HeroSection() {
                       </h1>
                     </div>
 
-                    {/* Supporting Copy */}
+                    {/* Supporting Copy: Stable min-height anchors the CTA buttons */}
                     <div className={styles.heroSubtitleWrapper}>
                       <p className={styles.heroSubtitle}>{state.description}</p>
                     </div>

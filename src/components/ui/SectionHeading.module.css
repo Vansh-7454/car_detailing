@@ -184,3 +184,6 @@
     font-size: 4rem;
   }
 }
+.oversizedNumber{
+  top: -2rem;
+}
