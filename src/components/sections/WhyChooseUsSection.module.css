@@ -1,32 +1,57 @@
 /* ==========================================================================
-   VELOCE STUDIO — WHY CHOOSE US (EDITORIAL SPECIFICATION GRID)
-   Replaces boxed cards with elegant architectural dividers & whitespace
+   VELOCE STUDIO — WHY CHOOSE US (STUDIO BENCHMARKS)
+   Refined cards with distinct golden hairline borders and subtle hover glow
+   Supports both Light and Graphite/Dark themes seamlessly
    ========================================================================== */
+
+.wrapper {
+  width: 100%;
+}
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
+  gap: clamp(1.25rem, 2vw, 1.75rem);
   margin-top: clamp(2.5rem, 5vw, 4rem);
-  border-top: 1px solid var(--border-light);
-  border-left: 1px solid var(--border-light);
 }
 
 .itemCard {
   display: flex;
   flex-direction: column;
-  padding: clamp(2rem, 3.5vw, 3rem);
-  background-color: transparent;
-  border-right: 1px solid var(--border-light);
-  border-bottom: 1px solid var(--border-light);
-  transition: background-color var(--transition-normal);
+  padding: clamp(2rem, 2.5vw, 2.75rem);
+  background-color: var(--bg-surface);
+  border: 1px solid rgba(194, 155, 83, 0.35);
+  border-radius: var(--radius-xs);
+  transition: all var(--transition-normal);
   position: relative;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
 }
 
 .itemCard:hover {
-  background-color: var(--bg-surface);
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px rgba(194, 155, 83, 0.18);
+  transform: translateY(-3px);
 }
 
+/* ---------------- Dark & Graphite Theme Styling ---------------- */
+.darkTheme .itemCard,
+:global(.section-dark) .itemCard,
+:global(.section-graphite) .itemCard {
+  background-color: rgba(22, 25, 32, 0.65);
+  border: 1px solid rgba(194, 155, 83, 0.4);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+}
+
+.darkTheme .itemCard:hover,
+:global(.section-dark) .itemCard:hover,
+:global(.section-graphite) .itemCard:hover {
+  background-color: rgba(28, 32, 42, 0.92);
+  border-color: var(--accent);
+  box-shadow: 0 12px 36px rgba(194, 155, 83, 0.22);
+  transform: translateY(-3px);
+}
+
+/* ---------------- Card Header ---------------- */
 .itemHeader {
   display: flex;
   align-items: center;
@@ -36,22 +61,33 @@
 
 .itemIndex {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   color: var(--accent);
   font-weight: 500;
+  line-height: 1;
 }
 
 .iconBox {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: var(--radius-xs);
   color: var(--accent);
+  background-color: rgba(194, 155, 83, 0.08);
+  border: 1px solid rgba(194, 155, 83, 0.28);
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.85;
+  transition: all var(--transition-fast);
 }
 
+.itemCard:hover .iconBox {
+  background-color: rgba(194, 155, 83, 0.16);
+  border-color: var(--accent);
+  color: var(--accent-light);
+  transform: scale(1.05);
+}
+
+/* ---------------- Card Typography ---------------- */
 .title {
   font-family: var(--font-serif);
   font-size: clamp(1.2rem, 1.5vw, 1.45rem);
@@ -62,28 +98,39 @@
   letter-spacing: 0.01em;
 }
 
+.darkTheme .title,
+:global(.section-dark) .title,
+:global(.section-graphite) .title {
+  color: #FFFFFF;
+}
+
 .desc {
   font-size: 0.875rem;
   line-height: 1.68;
   color: var(--text-secondary);
 }
 
+.darkTheme .desc,
+:global(.section-dark) .desc,
+:global(.section-graphite) .desc {
+  color: var(--text-inverse-secondary);
+}
+
+/* ---------------- Responsive Rules ---------------- */
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
   }
 }
 
 @media (max-width: 640px) {
   .grid {
     grid-template-columns: 1fr;
-    border-left: none;
-    border-right: none;
+    gap: 1rem;
   }
 
   .itemCard {
-    padding: 1.75rem 0.5rem;
-    border-left: none;
-    border-right: none;
+    padding: 1.75rem 1.25rem;
   }
 }

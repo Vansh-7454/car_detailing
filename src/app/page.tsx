@@ -197,7 +197,7 @@ export default function Home() {
       </section>
 
       {/* ---------------- 8. 05 PRICING (Mode A: Dominant Complete Detail Centerpiece) ---------------- */}
-      <section className="section-secondary section-padding">
+      <section className="section-dark section-padding">
         <Container>
           <SectionHeading
             sectionNumber="05"
@@ -209,7 +209,7 @@ export default function Home() {
             }
             subtitle="Clear starting estimates for hatchbacks, sedans, and SUVs. No hidden surcharges or surprise billing at handover."
             align="center"
-            theme="light"
+            theme="dark"
           />
 
           <div className={styles.packagesGrid}>
@@ -217,7 +217,7 @@ export default function Home() {
               <PackageCard
                 key={pkg.id}
                 packageData={pkg}
-                theme="light"
+                theme="dark"
               />
             ))}
           </div>
@@ -236,7 +236,7 @@ export default function Home() {
       </section>
 
       {/* ---------------- 9. OUR STANDARD (Mode A: Architectural Specification Grid) ---------------- */}
-      <section className="section-light section-padding">
+      <section className="section-graphite section-padding">
         <Container>
           <SectionHeading
             eyebrow="STUDIO BENCHMARKS"
@@ -247,10 +247,10 @@ export default function Home() {
             }
             subtitle="We focus on what actually matters: trained staff, quality products, thorough cleaning, and transparent package pricing."
             align="center"
-            theme="light"
+            theme="dark"
           />
 
-          <WhyChooseUsSection />
+          <WhyChooseUsSection theme="dark" />
         </Container>
       </section>
 

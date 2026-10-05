@@ -213,16 +213,17 @@
   color: var(--text-secondary);
 }
 
-.theme-dark .featureItem {
+.theme-dark .featureItem,
+.theme-dark.quietCard .featureItem {
   color: var(--text-inverse-secondary);
 }
 
-.dominantCard .featureItem {
+.theme-light.dominantCard .featureItem {
   color: var(--text-primary);
 }
 
-.theme-dark .dominantCard .featureItem {
-  color: var(--text-inverse-primary);
+.theme-dark.dominantCard .featureItem {
+  color: #FFFFFF !important;
 }
 
 .featureIcon {

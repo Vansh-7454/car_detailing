@@ -48,6 +48,49 @@
   z-index: 2;
 }
 
+/* ---------------- Layered Text Stage (Zero Layout Shift, Synchronized Crossfade) ---------------- */
+.textStage {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  width: 100%;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.textSlide {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              visibility 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+.textActive {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  visibility: visible;
+  z-index: 2;
+}
+
+.textInactive {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  visibility: hidden;
+  z-index: 1;
+}
+
 /* Stable Eyebrow Container: Fixed position, never jumps vertically */
 .eyebrowWrapper {
   min-height: 28px;
@@ -78,8 +121,6 @@
 
 .eyebrowText {
   display: inline-block;
-  transition: opacity 0.22s ease, transform 0.22s ease;
-  will-change: opacity, transform;
 }
 
 /* Headline Wrapper: Stable min-height prevents text below from jumping */
@@ -101,8 +142,6 @@
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
-  transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
 }
 
 .titleDominant {
@@ -121,35 +160,11 @@
   line-height: 0.96;
 }
 
-/* Text exiting: subtle upward fade (-8px) */
-.textExiting {
-  opacity: 0;
-  transform: translateY(-8px);
-}
-
-/* Text entering: settles smoothly from below (0px) */
-.textEntering {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Eyebrow specific subtle fade */
-.eyebrowExiting {
-  opacity: 0;
-  transform: translateY(-4px);
-}
-
-.eyebrowEntering {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* Subtitle Wrapper: Stable min-height anchors the CTA buttons */
 .heroSubtitleWrapper {
   min-height: clamp(48px, 4.5vw, 56px);
   display: flex;
   align-items: flex-start;
-  margin-bottom: 2rem;
   width: 100%;
 }
 
@@ -159,8 +174,6 @@
   line-height: 1.58;
   color: var(--text-secondary);
   max-width: 440px;
-  transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
 }
 
 /* Stable CTA buttons (completely fixed layout position, no jumping) */
@@ -196,7 +209,7 @@
   inset: 0;
   opacity: 0;
   transform: scale(1.015);
-  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 2.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: opacity, transform;
   pointer-events: none;
 }
@@ -373,6 +386,11 @@
     align-items: center;
     text-align: center;
     max-width: 100%;
+  }
+
+  .textSlide {
+    align-items: center;
+    text-align: center;
   }
 
   .eyebrowWrapper {

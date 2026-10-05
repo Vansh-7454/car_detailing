@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
@@ -65,36 +65,26 @@ const TICKER_SERVICES = [
 ];
 
 export default function HeroSection() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isExiting, setIsExiting] = useState(false);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  // ONE SINGLE SOURCE OF TRUTH for both text and image
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  // Automatic coordinated 4-state cycling every ~2.7s display + ~0.5s transition
+  // Synchronized continuous cycling: ~2.2s active state + ~0.5s transition = 2.7s total cycle
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
 
-    const scheduleNext = () => {
-      timerRef.current = setTimeout(() => {
-        // Fast synchronized text exit (200ms)
-        setIsExiting(true);
+    // Immediately preload all 4 hero images into browser GPU memory to eliminate network delay
+    HERO_STATES.forEach((state) => {
+      const img = new window.Image();
+      img.src = state.imageSrc;
+    });
 
-        // Switch to next state simultaneously with image crossfade
-        setTimeout(() => {
-          setCurrentIndex((prev) => (prev + 1) % HERO_STATES.length);
-          setIsExiting(false);
-        }, 200);
-      }, 2500);
-    };
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % HERO_STATES.length);
+    }, 2700);
 
-    scheduleNext();
-
-    return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-    };
-  }, [currentIndex]);
-
-  const current = HERO_STATES[currentIndex];
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section className={styles.heroSection} aria-label="Hero Experience">
@@ -105,35 +95,41 @@ export default function HeroSection() {
         <div className={styles.heroGrid}>
           {/* Left Column: Coordinated Typography & Narrative */}
           <div className={styles.heroLeft}>
-            {/* Rock-solid Eyebrow Container: Fixed position, never jumps vertically */}
-            <div className={styles.eyebrowWrapper}>
-              <div className={styles.eyebrow}>
-                <span className={styles.eyebrowLine} aria-hidden="true" />
-                <span
-                  className={`${styles.eyebrowText} ${isExiting ? styles.eyebrowExiting : styles.eyebrowEntering}`}
-                >
-                  {current.eyebrow}
-                </span>
-              </div>
-            </div>
+            {/* Layered Text Stage: 1-to-1 synchronized with image slides, zero layout shift */}
+            <div className={styles.textStage}>
+              {HERO_STATES.map((state, idx) => {
+                const isActive = idx === activeIndex;
+                return (
+                  <div
+                    key={state.id}
+                    className={`${styles.textSlide} ${
+                      isActive ? styles.textActive : styles.textInactive
+                    }`}
+                    aria-hidden={!isActive}
+                  >
+                    {/* Rock-solid Eyebrow Container: Fixed position, never jumps vertically */}
+                    <div className={styles.eyebrowWrapper}>
+                      <div className={styles.eyebrow}>
+                        <span className={styles.eyebrowLine} aria-hidden="true" />
+                        <span className={styles.eyebrowText}>{state.eyebrow}</span>
+                      </div>
+                    </div>
 
-            {/* Headline */}
-            <div className={styles.heroTitleWrapper}>
-              <h1
-                className={`${styles.heroTitle} ${isExiting ? styles.textExiting : styles.textEntering}`}
-              >
-                <span className={styles.titleDominant}>{current.headlineFirst}</span>
-                <span className={styles.titleAccent}>{current.headlineAccent}</span>
-              </h1>
-            </div>
+                    {/* Headline */}
+                    <div className={styles.heroTitleWrapper}>
+                      <h1 className={styles.heroTitle}>
+                        <span className={styles.titleDominant}>{state.headlineFirst}</span>
+                        <span className={styles.titleAccent}>{state.headlineAccent}</span>
+                      </h1>
+                    </div>
 
-            {/* Supporting Copy */}
-            <div className={styles.heroSubtitleWrapper}>
-              <p
-                className={`${styles.heroSubtitle} ${isExiting ? styles.textExiting : styles.textEntering}`}
-              >
-                {current.description}
-              </p>
+                    {/* Supporting Copy */}
+                    <div className={styles.heroSubtitleWrapper}>
+                      <p className={styles.heroSubtitle}>{state.description}</p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
             {/* Stable CTAs (completely anchored, no jumping) */}
@@ -161,7 +157,7 @@ export default function HeroSection() {
           <div className={styles.heroVisual}>
             <div className={styles.vehicleStage}>
               {HERO_STATES.map((state, idx) => {
-                const isActive = idx === currentIndex;
+                const isActive = idx === activeIndex;
                 return (
                   <div
                     key={state.id}
@@ -172,7 +168,7 @@ export default function HeroSection() {
                       src={state.imageSrc}
                       alt={state.imageAlt}
                       fill
-                      priority={idx === 0}
+                      priority
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 840px"
                       className={styles.carImage}
                     />
