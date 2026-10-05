@@ -1,0 +1,277 @@
+/* ==========================================================================
+   VELOCE STUDIO — FAQ PAGE STYLES
+   Categorized accordion with smooth transitions & semantic structure
+   ========================================================================== */
+
+/* ---------------- Hero Section ---------------- */
+.heroSection {
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-light);
+  padding-top: calc(var(--header-offset) + clamp(3rem, 5vw, 5rem));
+  padding-bottom: clamp(3.5rem, 5.5vw, 5rem);
+  position: relative;
+}
+
+.heroContent {
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.15rem;
+}
+
+.heroTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(2.35rem, 4.5vw, 3.85rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.heroTitle em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+}
+
+.heroLede {
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 620px;
+}
+
+/* ---------------- FAQ Content Section ---------------- */
+.faqSection {
+  background-color: var(--bg-graphite);
+  color: var(--text-inverse-primary);
+  border-bottom: 1px solid var(--border-graphite);
+  padding-top: clamp(4rem, 6vw, 6.5rem);
+  padding-bottom: clamp(4.5rem, 7vw, 7.5rem);
+  position: relative;
+}
+
+.accordionWrapper {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* Category Filter Bar */
+.categoryBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.catBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-inverse-muted);
+  background-color: var(--bg-graphite-card);
+  border: 1px solid var(--border-graphite);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.catBtn:hover {
+  color: var(--text-inverse-primary);
+  border-color: var(--accent);
+}
+
+.catBtn.active {
+  background-color: var(--accent);
+  color: #0E1014;
+  border-color: var(--accent);
+  box-shadow: 0 4px 14px rgba(194, 155, 83, 0.25);
+}
+
+.catCount {
+  font-size: 0.7rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-pill);
+}
+
+.catBtn.active .catCount {
+  background-color: rgba(14, 16, 20, 0.25);
+  color: #0E1014;
+}
+
+/* Accordion Item Card */
+.accordionList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faqItem {
+  background-color: var(--bg-graphite-card);
+  border: 1px solid var(--border-graphite);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.faqItem.open {
+  border-color: var(--accent-border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.accordionBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.35rem 1.75rem;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.accordionBtn:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.questionMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+}
+
+.categoryTag {
+  font-size: 0.675rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.questionText {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--text-inverse-primary);
+}
+
+.chevronIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-light);
+  flex-shrink: 0;
+  transition: transform var(--transition-normal), background-color var(--transition-fast);
+}
+
+.faqItem.open .chevronIcon {
+  transform: rotate(180deg);
+  background-color: var(--accent-subtle);
+  border-color: var(--accent-border);
+}
+
+/* Accordion Smooth Body Expand */
+.accordionBody {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faqItem.open .accordionBody {
+  grid-template-rows: 1fr;
+}
+
+.accordionBodyInner {
+  overflow: hidden;
+}
+
+.answerContent {
+  padding: 0 1.75rem 1.5rem;
+  font-size: 0.925rem;
+  line-height: 1.75;
+  color: var(--text-inverse-secondary);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding-top: 1rem;
+}
+
+/* ---------------- Internal Navigation Section ---------------- */
+.internalNavSection {
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-light);
+  padding: 2.75rem 0;
+}
+
+.internalNavRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.navLinkItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color var(--transition-fast);
+}
+
+.navLinkItem:hover {
+  color: var(--accent);
+}
+
+/* ---------------- Responsive Rules ---------------- */
+@media (max-width: 768px) {
+  .categoryBar {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+
+  .catBtn {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    padding: 0.45rem 0.9rem;
+  }
+
+  .accordionBtn {
+    padding: 1.15rem 1.25rem;
+  }
+
+  .questionText {
+    font-size: 1.1rem;
+  }
+
+  .answerContent {
+    padding: 0 1.25rem 1.25rem;
+    padding-top: 0.85rem;
+    font-size: 0.875rem;
+  }
+}

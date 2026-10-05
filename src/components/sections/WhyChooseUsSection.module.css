@@ -1,0 +1,89 @@
+/* ==========================================================================
+   VELOCE STUDIO — WHY CHOOSE US (EDITORIAL SPECIFICATION GRID)
+   Replaces boxed cards with elegant architectural dividers & whitespace
+   ========================================================================== */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--border-light);
+  border-left: 1px solid var(--border-light);
+}
+
+.itemCard {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(2rem, 3.5vw, 3rem);
+  background-color: transparent;
+  border-right: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  transition: background-color var(--transition-normal);
+  position: relative;
+}
+
+.itemCard:hover {
+  background-color: var(--bg-surface);
+}
+
+.itemHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.itemIndex {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.iconBox {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-xs);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 1.5vw, 1.45rem);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.01em;
+}
+
+.desc {
+  font-size: 0.875rem;
+  line-height: 1.68;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+    border-left: none;
+    border-right: none;
+  }
+
+  .itemCard {
+    padding: 1.75rem 0.5rem;
+    border-left: none;
+    border-right: none;
+  }
+}

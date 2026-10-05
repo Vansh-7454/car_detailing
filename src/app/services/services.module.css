@@ -1,0 +1,683 @@
+/* ==========================================================================
+   VELOCE STUDIO — SERVICES PAGE STYLES
+   Editorial automotive detailing experience for Indian vehicles
+   ========================================================================== */
+
+/* ---------------- Hero Section ---------------- */
+.heroSection {
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-light);
+  padding-top: calc(var(--header-offset) + clamp(3rem, 5vw, 5rem));
+  padding-bottom: clamp(4.5rem, 7vw, 6.5rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.heroEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.heroTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(2.35rem, 4.5vw, 3.75rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.heroTitle em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+}
+
+.heroLede {
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 560px;
+}
+
+.heroBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill);
+}
+
+.heroBadgeDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--accent);
+}
+
+.heroImageContainer {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-light-strong);
+  aspect-ratio: 16 / 10;
+  background-color: var(--bg-tertiary);
+  transition: transform var(--transition-normal);
+}
+
+.heroImageContainer:hover {
+  transform: translateY(-2px);
+}
+
+.heroImage {
+  object-fit: cover;
+}
+
+.heroImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 60%,
+    rgba(14, 16, 20, 0.45) 100%
+  );
+  pointer-events: none;
+}
+
+.heroImageBadge {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  background-color: rgba(20, 22, 28, 0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--accent-border);
+  color: var(--text-inverse-primary);
+  padding: 0.4rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ---------------- Editorial Services List ---------------- */
+.servicesSection {
+  background-color: var(--bg-graphite);
+  color: var(--text-inverse-primary);
+  border-bottom: 1px solid var(--border-graphite);
+  padding-top: clamp(4rem, 7vw, 7.5rem);
+  padding-bottom: clamp(4rem, 7vw, 7.5rem);
+  position: relative;
+}
+
+.servicesIntro {
+  max-width: 720px;
+  margin: 0 auto clamp(3rem, 5vw, 5rem);
+  text-align: center;
+}
+
+.editorialList {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3.5rem, 6vw, 6rem);
+}
+
+/* Alternating Editorial Service Row */
+.editorialRow {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  padding: clamp(2.5rem, 5vw, 4.5rem) 0;
+  background-color: transparent;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  transition: opacity var(--transition-normal);
+}
+
+.editorialRow:first-of-type {
+  border-top: none;
+}
+
+.editorialRow:hover {
+  opacity: 1;
+}
+
+.editorialRow.reversed {
+  grid-template-columns: 1fr 1.05fr;
+}
+
+.editorialRow.reversed .editorialImageCol {
+  order: 2;
+}
+
+.editorialRow.reversed .editorialContentCol {
+  order: 1;
+}
+
+/* Image Column */
+.editorialImageCol {
+  position: relative;
+}
+
+.editorialImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  background-color: #14161C;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.editorialImage {
+  object-fit: cover;
+  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorialRow:hover .editorialImage {
+  transform: scale(1.02);
+}
+
+.imageCategoryBadge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: rgba(20, 22, 28, 0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-graphite);
+  color: var(--accent-light);
+  font-size: 0.725rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-xs);
+  z-index: 2;
+}
+
+.imageDurationBadge {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: rgba(20, 22, 28, 0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-inverse-primary);
+  font-size: 0.725rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-xs);
+  z-index: 2;
+}
+
+/* Content Column */
+.editorialContentCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.headerRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.serviceNumber {
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 3.5vw, 3rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--accent);
+  display: inline-block;
+  transition: transform 0.35s var(--ease-out);
+}
+
+.editorialRow:hover .serviceNumber {
+  transform: translateX(4px);
+}
+
+.serviceMetaCategory {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-inverse-muted);
+}
+
+.serviceTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 2.5vw, 2.15rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--text-inverse-primary);
+}
+
+/* Subtle Accent Line */
+.accentLine {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+  transition: width 0.35s var(--ease-out), background-color 0.35s var(--ease-out);
+}
+
+.editorialRow:hover .accentLine {
+  width: 90px;
+}
+
+.serviceDescription {
+  font-size: 0.925rem;
+  line-height: 1.7;
+  color: var(--text-inverse-secondary);
+}
+
+/* Deliverables Section */
+.deliverablesBox {
+  margin-top: 0.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.deliverablesHeading {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 0.75rem;
+}
+
+.deliverablesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem 1rem;
+  list-style: none;
+}
+
+.deliverableItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.825rem;
+  color: var(--text-inverse-secondary);
+}
+
+.deliverableIcon {
+  color: var(--accent);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Footer / Action Area */
+.editorialFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pricingBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.priceLabel {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-inverse-muted);
+  font-weight: 600;
+}
+
+.priceValue {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 600;
+  color: var(--accent-light);
+  line-height: 1.1;
+}
+
+.priceSub {
+  font-size: 0.75rem;
+  color: var(--text-inverse-subtle);
+  margin-top: 0.15rem;
+}
+
+.serviceCtaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  background-color: var(--accent-subtle);
+  border: 1px solid var(--accent-border);
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-xs);
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.serviceCtaLink span:last-child {
+  transition: transform 0.25s var(--ease-out);
+  display: inline-flex;
+}
+
+.editorialRow:hover .serviceCtaLink span:last-child {
+  transform: translateX(4px);
+}
+
+.serviceCtaLink:hover {
+  background-color: var(--accent);
+  color: #0E1014;
+  border-color: var(--accent);
+}
+
+/* ---------------- Size Note Transparent Callout ---------------- */
+.sizeNoteWrapper {
+  margin-top: clamp(2.5rem, 4vw, 4rem);
+  text-align: center;
+}
+
+.sizeNote {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  color: var(--text-inverse-muted);
+  line-height: 1.5;
+}
+
+.sizeNoteDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ---------------- Service Process Section ---------------- */
+.processSection {
+  background-color: var(--bg-dark);
+  color: var(--text-inverse-primary);
+  border-bottom: 1px solid var(--border-dark);
+  padding-top: clamp(4.5rem, 8vw, 8.5rem);
+  padding-bottom: clamp(4.5rem, 8vw, 8.5rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.processHeader {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto clamp(3rem, 5vw, 4.5rem);
+}
+
+/* Desktop Horizontal Timeline */
+.horizontalTimeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  position: relative;
+}
+
+/* Progress Connecting Line */
+.timelineTrack {
+  position: absolute;
+  top: 36px;
+  left: 60px;
+  right: 60px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(194, 155, 83, 0.4) 0%,
+    rgba(194, 155, 83, 0.8) 50%,
+    rgba(194, 155, 83, 0.4) 100%
+  );
+  z-index: 1;
+}
+
+.timelineNode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  padding: 0 0.5rem;
+}
+
+.nodeDot {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: #14161C;
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(194, 155, 83, 0.25);
+  margin-bottom: 1.5rem;
+  transition: transform var(--transition-normal), border-color var(--transition-normal);
+}
+
+.timelineNode:hover .nodeDot {
+  transform: scale(1.06);
+  border-color: var(--accent-light);
+  box-shadow: 0 0 26px rgba(194, 155, 83, 0.4);
+}
+
+.nodeNumber {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--accent-light);
+}
+
+.nodeCard {
+  background-color: var(--bg-dark-card);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem 1.25rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: border-color var(--transition-normal), transform var(--transition-normal);
+}
+
+.timelineNode:hover .nodeCard {
+  border-color: var(--accent-border);
+  transform: translateY(-3px);
+}
+
+.nodeTitle {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--text-inverse-primary);
+}
+
+.nodeSubtitle {
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.nodeDesc {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-inverse-secondary);
+}
+
+/* Mobile Vertical Timeline (hidden by default on desktop) */
+.verticalTimeline {
+  display: none;
+}
+
+/* ---------------- Responsive Rules ---------------- */
+@media (max-width: 1024px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .editorialRow,
+  .editorialRow.reversed {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .editorialRow.reversed .editorialImageCol {
+    order: 1;
+  }
+
+  .editorialRow.reversed .editorialContentCol {
+    order: 2;
+  }
+
+  .horizontalTimeline {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .timelineTrack {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .horizontalTimeline {
+    display: none;
+  }
+
+  .verticalTimeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .verticalTimeline::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 23px;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      var(--accent) 0%,
+      rgba(194, 155, 83, 0.4) 100%
+    );
+  }
+
+  .verticalStep {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .verticalDot {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: #14161C;
+    border: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: -23px;
+    z-index: 2;
+    box-shadow: 0 0 14px rgba(194, 155, 83, 0.3);
+  }
+
+  .verticalDotNumber {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent-light);
+  }
+
+  .verticalCard {
+    background-color: var(--bg-dark-card);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem;
+    flex: 1;
+  }
+
+  .deliverablesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .editorialFooter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .serviceCtaLink {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroBadges {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sizeNote {
+    font-size: 0.775rem;
+    padding: 0.65rem 1rem;
+    text-align: left;
+  }
+}

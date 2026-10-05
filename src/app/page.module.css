@@ -1,0 +1,106 @@
+/* ==========================================================================
+   VELOCE STUDIO — HOME PAGE STYLES (INDIAN AUTOMOTIVE DETAILING)
+   Art-directed editorial rhythm & asymmetrical compositions
+   ========================================================================== */
+
+/* ---------------- Philosophy Section (Mode A: Warm Light Editorial) ---------------- */
+.philosophyGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.statementHeading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4.5vw, 3.85rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.statementHeading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+}
+
+.philosophyText {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.philosophyText p strong {
+  color: var(--text-primary);
+}
+
+.quoteCallout {
+  padding: 1.25rem 1.5rem;
+  background-color: var(--bg-surface);
+  border-left: 2px solid var(--accent);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--text-primary);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  border-top: 1px solid var(--border-light);
+  border-right: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* ---------------- Packages Grid ---------------- */
+.packagesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 2.5vw, 2.25rem);
+  align-items: center;
+  margin-top: 3rem;
+}
+
+/* ---------------- Testimonials Grid ---------------- */
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 2.5vw, 2.25rem);
+  margin-top: 3rem;
+}
+
+/* ---------------- Common Action Rows ---------------- */
+.sectionActionRow {
+  display: flex;
+  justify-content: center;
+  margin-top: 3.5rem;
+}
+
+/* ---------------- Responsive Rules ---------------- */
+@media (max-width: 1024px) {
+  .packagesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .philosophyGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonialsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .packagesGrid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

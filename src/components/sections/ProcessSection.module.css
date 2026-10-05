@@ -1,0 +1,250 @@
+/* ==========================================================================
+   VELOCE STUDIO — EDITORIAL PROCESS PROGRESSION
+   Connected horizontal progression with thin lines and refined gold markers
+   Fully art-directed for both Light and Graphite/Dark themes
+   ========================================================================== */
+
+.progressionWrapper {
+  width: 100%;
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+  position: relative;
+}
+
+.progressionTrack {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.5rem, 2.5vw, 2.5rem);
+  position: relative;
+}
+
+.stepNode {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform var(--transition-fast);
+}
+
+.stepNode:hover {
+  transform: translateY(-2px);
+}
+
+/* ---------------- Connector Line & Marker Row ---------------- */
+.connectorRow {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 24px;
+  margin-bottom: 1.5rem;
+}
+
+.stepMarker {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  background-color: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  transition: all var(--transition-fast);
+}
+
+.darkTheme .stepMarker,
+:global(.section-graphite) .stepMarker,
+:global(.section-dark) .stepMarker {
+  background-color: #14161C;
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(194, 155, 83, 0.3);
+}
+
+.stepNode:hover .stepMarker {
+  border-color: var(--accent-light);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.markerCore {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent);
+}
+
+.lineTrack {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  position: relative;
+  margin-left: 0.65rem;
+}
+
+.lineBody {
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-light-strong);
+}
+
+.darkTheme .lineBody,
+:global(.section-graphite) .lineBody,
+:global(.section-dark) .lineBody {
+  background: linear-gradient(
+    90deg,
+    rgba(194, 155, 83, 0.6) 0%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
+}
+
+.lineArrow {
+  font-size: 0.875rem;
+  color: var(--accent);
+  line-height: 1;
+  margin-left: 0.35rem;
+  opacity: 0.85;
+}
+
+/* ---------------- Step Content ---------------- */
+.stepContent {
+  display: flex;
+  flex-direction: column;
+  padding-right: 0.75rem;
+}
+
+.headerRow {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.stepNumber {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.stepSubtitle {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.darkTheme .stepSubtitle,
+:global(.section-graphite) .stepSubtitle,
+:global(.section-dark) .stepSubtitle {
+  color: var(--accent-light);
+  opacity: 0.95;
+}
+
+.stepTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 1.65vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  color: var(--text-primary);
+  line-height: 1.25;
+  margin-bottom: 0.85rem;
+}
+
+.darkTheme .stepTitle,
+:global(.section-graphite) .stepTitle,
+:global(.section-dark) .stepTitle {
+  color: #FFFFFF !important;
+}
+
+.stepDesc {
+  font-size: 0.8875rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 1.35rem;
+}
+
+.darkTheme .stepDesc,
+:global(.section-graphite) .stepDesc,
+:global(.section-dark) .stepDesc {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+.highlightsList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.darkTheme .highlightsList,
+:global(.section-graphite) .highlightsList,
+:global(.section-dark) .highlightsList {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.highlightItem {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.darkTheme .highlightItem,
+:global(.section-graphite) .highlightItem,
+:global(.section-dark) .highlightItem {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+.highlightDash {
+  color: var(--accent);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* ---------------- Responsive Progression Rules ---------------- */
+@media (max-width: 1024px) {
+  .progressionTrack {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  .lineTrack {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .progressionTrack {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--border-light-strong);
+  }
+
+  .darkTheme .progressionTrack,
+  :global(.section-graphite) .progressionTrack,
+  :global(.section-dark) .progressionTrack {
+    border-left-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .connectorRow {
+    position: absolute;
+    left: -1.5rem;
+    top: 0;
+    margin-bottom: 0;
+    transform: translateX(-50%);
+  }
+
+  .stepNode {
+    position: relative;
+    padding-bottom: 1.5rem;
+  }
+}

@@ -1,0 +1,267 @@
+/* ==========================================================================
+   VELOCE STUDIO — DIGITAL VISITING CARD STYLES
+   Tactile, luxury dark graphite card with brushed gold accents
+   ========================================================================== */
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.perspectiveWrapper {
+  perspective: 1000px;
+  width: 100%;
+}
+
+.flipper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.75 / 1;
+  min-height: 270px;
+  transform-style: preserve-3d;
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.flipper.isFlipped {
+  transform: rotateY(180deg);
+}
+
+.cardFace {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--radius-sm);
+  padding: clamp(1.5rem, 3.5vw, 2.25rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(194, 155, 83, 0.35);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Front Face */
+.cardFront {
+  background: radial-gradient(circle at 80% 20%, #20242D 0%, #111317 75%, #0B0D10 100%);
+  color: var(--text-inverse-primary);
+}
+
+.frontTexture {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(194, 155, 83, 0.08) 1px, transparent 1px);
+  background-size: 16px 16px;
+  pointer-events: none;
+}
+
+.frontTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.goldFoilBadge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  border: 1px solid rgba(194, 155, 83, 0.4);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  background-color: rgba(194, 155, 83, 0.1);
+}
+
+.frontCenter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.brandIdentityRow {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.cardLogo {
+  color: var(--accent);
+  filter: drop-shadow(0 2px 8px rgba(194, 155, 83, 0.35));
+}
+
+.cardBrandName {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3.2vw, 2.15rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #FFFFFF;
+  line-height: 1;
+}
+
+.cardTagline {
+  font-size: 0.825rem;
+  color: var(--text-inverse-secondary);
+  line-height: 1.5;
+  max-width: 360px;
+}
+
+.frontBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 0.75rem;
+}
+
+.cardEdition {
+  font-size: 0.7rem;
+  color: var(--text-inverse-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cardHint {
+  font-size: 0.7rem;
+  color: var(--accent-light);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Back Face */
+.cardBack {
+  background: radial-gradient(circle at 20% 80%, #20242D 0%, #111317 75%, #0B0D10 100%);
+  color: var(--text-inverse-primary);
+  transform: rotateY(180deg);
+}
+
+.backHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.75rem;
+}
+
+.studioName {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.servicePill {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+}
+
+.backGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1.25rem;
+  margin: 0.5rem 0;
+}
+
+.contactItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.itemLabel {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-inverse-muted);
+}
+
+.itemValue {
+  font-size: 0.775rem;
+  color: var(--text-inverse-primary);
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.backFooter {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.disclaimerText {
+  font-size: 0.65rem;
+  color: var(--text-inverse-muted);
+}
+
+/* Control Buttons */
+.controlsRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.flipButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light-strong);
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.flipButton:hover {
+  background-color: var(--accent-subtle);
+  border-color: var(--accent);
+}
+
+@media (max-width: 480px) {
+  .cardFace {
+    padding: 1.15rem 1rem;
+  }
+
+  .flipper {
+    min-height: 290px;
+  }
+
+  .backGrid {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
+
+  .cardBrandName {
+    font-size: 1.45rem;
+  }
+
+  .cardTagline {
+    font-size: 0.775rem;
+  }
+}

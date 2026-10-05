@@ -1,0 +1,186 @@
+.wrapper {
+  margin-bottom: clamp(2.5rem, 5vw, 4.25rem);
+  position: relative;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.eyebrowContainer {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.align-center .eyebrowContainer {
+  justify-content: center;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.1rem, 4.2vw, 3.75rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+
+.theme-light .title {
+  color: var(--text-primary);
+}
+
+.theme-graphite .title,
+.theme-dark .title {
+  color: var(--text-inverse-primary);
+}
+
+.title em,
+.title :global(.accent-italic) {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+}
+
+.subtitle {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.2vw, 1.125rem);
+  line-height: 1.65;
+  font-weight: 400;
+  max-width: 660px;
+}
+
+.align-center .subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.theme-light .subtitle {
+  color: var(--text-secondary);
+}
+
+.theme-graphite .subtitle,
+.theme-dark .subtitle {
+  color: var(--text-inverse-secondary);
+}
+
+/* ---------------- Oversized Decorative Section Number ---------------- */
+.oversizedNumber {
+  position: absolute;
+  top: -2.8rem;
+  left: -0.4rem;
+  font-family: var(--font-serif);
+  font-size: clamp(4.5rem, 8.5vw, 7.5rem);
+  font-weight: 300;
+  line-height: 1;
+  color: rgba(21, 23, 28, 0.05);
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+  letter-spacing: -0.04em;
+}
+
+.align-center .oversizedNumber {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.theme-graphite .oversizedNumber,
+.theme-dark .oversizedNumber {
+  color: rgba(255, 255, 255, 0.04);
+}
+
+.hasSectionNumber .title,
+.hasSectionNumber .eyebrowContainer,
+.hasSectionNumber .subtitle {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------------- Asymmetric Editorial Split Layout ---------------- */
+.editorialSplitWrapper {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: clamp(2rem, 4vw, 4.5rem);
+  align-items: flex-end;
+  margin-bottom: clamp(2.5rem, 5vw, 4.25rem);
+  position: relative;
+}
+
+.splitSectionNumber {
+  position: absolute;
+  top: -2.5rem;
+  left: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(4rem, 7vw, 6.5rem);
+  font-weight: 300;
+  line-height: 1;
+  color: rgba(21, 23, 28, 0.05);
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.theme-graphite .splitSectionNumber,
+.theme-dark .splitSectionNumber {
+  color: rgba(255, 255, 255, 0.04);
+}
+
+.splitLeft {
+  position: relative;
+  z-index: 1;
+}
+
+.splitRight {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 0.25rem;
+}
+
+.splitSubtitle {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.2vw, 1.125rem);
+  line-height: 1.68;
+  color: var(--text-secondary);
+}
+
+.theme-graphite .splitSubtitle,
+.theme-dark .splitSubtitle {
+  color: var(--text-inverse-secondary);
+}
+
+@media (max-width: 900px) {
+  .editorialSplitWrapper {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .oversizedNumber {
+    top: -2rem;
+    font-size: 4rem;
+  }
+}

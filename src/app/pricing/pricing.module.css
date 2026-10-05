@@ -1,0 +1,653 @@
+/* ==========================================================================
+   VELOCE STUDIO — PRICING PAGE STYLES
+   Bespoke automotive detailing pricing & package comparison
+   ========================================================================== */
+
+/* ---------------- Hero Section ---------------- */
+.heroSection {
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-light);
+  padding-top: calc(var(--header-offset) + clamp(3rem, 5vw, 5rem));
+  padding-bottom: clamp(4rem, 6.5vw, 6rem);
+  position: relative;
+}
+
+.heroContent {
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.heroTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.heroTitle em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+}
+
+.heroLede {
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 620px;
+}
+
+/* Vehicle Segment Filter / Reference Pills */
+.segmentGuide {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.segmentPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-pill);
+}
+
+.segmentDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent);
+}
+
+/* ---------------- Packages Section ---------------- */
+.packagesSection {
+  background-color: var(--bg-dark);
+  color: var(--text-inverse-primary);
+  border-bottom: 1px solid var(--border-dark);
+  padding-top: clamp(4.5rem, 7vw, 7.5rem);
+  padding-bottom: clamp(4.5rem, 7vw, 7.5rem);
+  position: relative;
+}
+
+.packagesIntro {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto clamp(3rem, 5vw, 4.5rem);
+}
+
+.packagesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 2.5vw, 2.25rem);
+  align-items: stretch;
+}
+
+/* Automotive Package Card */
+.packageCard {
+  background-color: var(--bg-dark-card);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-sm);
+  padding: clamp(1.75rem, 3vw, 2.25rem);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+  opacity: 0.9;
+}
+
+.packageCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55);
+  opacity: 1;
+}
+
+/* Visually Dominant Recommended Package: Visual Centerpiece */
+.packageCard.recommended {
+  border: 1.5px solid var(--accent);
+  background-color: #171922;
+  box-shadow: 0 16px 50px -8px rgba(194, 155, 83, 0.22);
+  opacity: 1;
+  transform: scale(1.02);
+  z-index: 2;
+  padding: clamp(2.25rem, 3.5vw, 2.85rem);
+}
+
+.packageCard.recommended:hover {
+  transform: scale(1.02) translateY(-4px);
+  border-color: var(--accent-light);
+  box-shadow: 0 24px 60px -8px rgba(194, 155, 83, 0.32);
+}
+
+.recommendedBadge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--accent);
+  color: #0E1014;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.9rem;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 12px rgba(194, 155, 83, 0.35);
+  white-space: nowrap;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cardBadge {
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.cardTitle {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-inverse-primary);
+}
+
+.cardSubtitle {
+  font-size: 0.825rem;
+  color: var(--text-inverse-muted);
+  line-height: 1.5;
+}
+
+.priceBlock {
+  padding: 1.25rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+.priceMain {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.priceValue {
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: var(--accent-light);
+  line-height: 1;
+}
+
+.pricePeriod {
+  font-size: 0.85rem;
+  color: var(--text-inverse-muted);
+}
+
+.turnaroundMeta {
+  margin-top: 0.4rem;
+  font-size: 0.775rem;
+  color: var(--text-inverse-secondary);
+}
+
+.featureListHeading {
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-inverse-muted);
+  margin-bottom: 0.85rem;
+}
+
+.featuresList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  color: var(--text-inverse-secondary);
+  line-height: 1.45;
+}
+
+.featureIcon {
+  color: var(--accent);
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.cardAction {
+  margin-top: auto;
+}
+
+/* ---------------- Additional Services Refined List ---------------- */
+.additionalSection {
+  background-color: var(--bg-graphite);
+  color: var(--text-inverse-primary);
+  border-bottom: 1px solid var(--border-graphite);
+  padding-top: clamp(4.5rem, 7vw, 7rem);
+  padding-bottom: clamp(4.5rem, 7vw, 7rem);
+}
+
+.additionalIntro {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto clamp(2.5rem, 4vw, 4rem);
+}
+
+.servicesListWrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  border: 1px solid var(--border-graphite);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-graphite-card);
+  overflow: hidden;
+}
+
+.serviceRowItem {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr auto;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.35rem 1.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.serviceRowItem:last-child {
+  border-bottom: none;
+}
+
+.serviceRowItem:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.rowMain {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.rowTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.rowName {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-inverse-primary);
+}
+
+.rowCategory {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background-color: var(--accent-subtle);
+  border: 1px solid var(--accent-border);
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-xs);
+}
+
+.rowDesc {
+  font-size: 0.825rem;
+  color: var(--text-inverse-secondary);
+  line-height: 1.5;
+}
+
+.rowPricing {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.rowPriceValue {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--accent-light);
+}
+
+.rowDuration {
+  font-size: 0.75rem;
+  color: var(--text-inverse-muted);
+}
+
+.rowActionLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--accent);
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--border-graphite);
+  border-radius: var(--radius-xs);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.serviceRowItem:hover .rowActionLink {
+  border-color: var(--accent-border);
+  background-color: var(--accent-subtle);
+}
+
+.rowActionLink:hover {
+  background-color: var(--accent) !important;
+  color: #0E1014;
+}
+
+/* ---------------- Package Comparison Section ---------------- */
+.comparisonSection {
+  background-color: var(--bg-dark);
+  color: var(--text-inverse-primary);
+  border-bottom: 1px solid var(--border-dark);
+  padding-top: clamp(4.5rem, 7vw, 7.5rem);
+  padding-bottom: clamp(4.5rem, 7vw, 7.5rem);
+  position: relative;
+}
+
+.comparisonIntro {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto clamp(2.5rem, 4vw, 4rem);
+}
+
+/* Desktop Matrix */
+.desktopMatrix {
+  display: block;
+  max-width: 1040px;
+  margin: 0 auto;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-dark-card);
+  overflow: hidden;
+}
+
+.matrixHeader {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 1.2fr 1.2fr;
+  padding: 1.5rem 1.75rem;
+  background-color: #12141A;
+  border-bottom: 2px solid var(--border-dark);
+}
+
+.matrixHeaderCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.matrixHeaderCol.center {
+  text-align: center;
+  align-items: center;
+}
+
+.matrixColTitle {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-inverse-primary);
+}
+
+.matrixColPrice {
+  font-size: 0.85rem;
+  color: var(--accent-light);
+  font-weight: 600;
+}
+
+.matrixRow {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 1.2fr 1.2fr;
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  align-items: center;
+  transition: background-color var(--transition-fast);
+}
+
+.matrixRow:last-child {
+  border-bottom: none;
+}
+
+.matrixRow:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.featureMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-right: 1.5rem;
+}
+
+.featureName {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-inverse-primary);
+}
+
+.featureDesc {
+  font-size: 0.775rem;
+  color: var(--text-inverse-muted);
+  line-height: 1.4;
+}
+
+.matrixStatusCell {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.includedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #22C55E;
+  flex-shrink: 0;
+}
+
+.notIncluded {
+  font-size: 0.8rem;
+  color: var(--text-inverse-subtle);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.cellNote {
+  font-size: 0.7rem;
+  color: var(--text-inverse-muted);
+}
+
+/* Mobile Stacked Comparison (replaces matrix on mobile) */
+.mobileStackedComparison {
+  display: none;
+}
+
+.mobilePackageCard {
+  background-color: var(--bg-dark-card);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.mobilePackageCard.recommended {
+  border-color: var(--accent-border);
+}
+
+.mobileCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.mobileCardTitle {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-inverse-primary);
+}
+
+.mobileCardPrice {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-light);
+}
+
+.mobileFeaturesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.mobileFeatureRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.mobileFeatureRow:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.mobileFeatureName {
+  font-size: 0.85rem;
+  color: var(--text-inverse-secondary);
+}
+
+/* ---------------- Pricing Disclaimer Box ---------------- */
+.disclaimerWrapper {
+  margin-top: clamp(3rem, 5vw, 4.5rem);
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.disclaimerBox {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem 1.75rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.disclaimerHeading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+}
+
+.disclaimerText {
+  font-size: 0.85rem;
+  color: var(--text-inverse-secondary);
+  line-height: 1.6;
+}
+
+/* ---------------- Responsive Rules ---------------- */
+@media (max-width: 1024px) {
+  .packagesGrid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .serviceRowItem {
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+  }
+
+  .rowPricing {
+    grid-column: 1 / -1;
+    text-align: left;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .rowActionLink {
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .desktopMatrix {
+    display: none;
+  }
+
+  .mobileStackedComparison {
+    display: block;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .heroTitle {
+    font-size: 2.2rem;
+  }
+
+  .serviceRowItem {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobilePackageCard {
+    padding: 1.15rem 1rem;
+  }
+
+  .mobileFeatureRow {
+    gap: 0.5rem;
+  }
+}
+

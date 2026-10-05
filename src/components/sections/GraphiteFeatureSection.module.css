@@ -1,0 +1,163 @@
+/* ==========================================================================
+   VELOCE STUDIO — GRAPHITE FEATURE SECTION
+   Single charcoal section with cream typography & restrained gold accent
+   ========================================================================== */
+
+.section {
+  position: relative;
+  background-color: var(--bg-graphite);
+  color: var(--text-inverse-primary);
+  padding: clamp(5rem, 9vw, 9.5rem) 0;
+  overflow: hidden;
+  border-top: 1px solid var(--border-graphite);
+  border-bottom: 1px solid var(--border-graphite);
+}
+
+.ambientGlow {
+  position: absolute;
+  top: 0;
+  right: 10%;
+  width: min(100%, 700px);
+  height: 380px;
+  background: radial-gradient(circle at top right, rgba(194, 155, 83, 0.09) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.editorialGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.statementCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.eyebrowBox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent);
+}
+
+.eyebrowText {
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+}
+
+.headline {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.headlineAccent {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent-light);
+}
+
+.contentCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.bodyText {
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
+  line-height: 1.75;
+  color: var(--text-inverse-secondary);
+}
+
+.specList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.specItem {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+}
+
+.specNumber {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.specMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.specTitle {
+  font-size: 0.925rem;
+  font-weight: 600;
+  color: var(--text-inverse-primary);
+  letter-spacing: 0.02em;
+}
+
+.specDesc {
+  font-size: 0.8125rem;
+  color: var(--text-inverse-muted);
+}
+
+.actionsRow {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.secondaryLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-inverse-primary);
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 0.35rem;
+  transition: gap var(--transition-fast), color var(--transition-fast);
+}
+
+.secondaryLink:hover {
+  color: var(--accent-light);
+  gap: 0.75rem;
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 960px) {
+  .editorialGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}

@@ -1,0 +1,317 @@
+/* ==========================================================================
+   VELOCE STUDIO — EDITORIAL SERVICE LIST
+   Art-directed numbered rows with smooth image preview
+   ========================================================================== */
+
+.container {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2rem, 4vw, 4.5rem);
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+/* ---------------- Left Column: Numbered Editorial Rows ---------------- */
+.listCol {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.serviceRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(1.4rem, 2.4vw, 2.1rem) 1.25rem;
+  border-top: 1px solid var(--border-light);
+  background-color: transparent;
+  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+  cursor: pointer;
+  position: relative;
+  border-radius: var(--radius-xs);
+}
+
+.serviceRow:last-of-type {
+  border-bottom: 1px solid var(--border-light);
+}
+
+.serviceRow:hover,
+.rowActive {
+  background-color: var(--bg-surface);
+  border-color: rgba(21, 23, 28, 0.16);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.rowLeft {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(1.2rem, 2.2vw, 2.2rem);
+  flex: 1;
+}
+
+.serviceNum {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: -0.02em;
+  transition: color var(--transition-fast);
+  width: 2.25rem;
+  flex-shrink: 0;
+}
+
+.serviceRow:hover .serviceNum,
+.rowActive .serviceNum {
+  color: var(--accent);
+}
+
+.rowText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.titleLine {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.serviceTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  line-height: 1.15;
+  transition: color var(--transition-fast);
+}
+
+.serviceRow:hover .serviceTitle,
+.rowActive .serviceTitle {
+  color: var(--text-primary);
+}
+
+.serviceCategory {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.85;
+}
+
+.serviceTagline {
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  line-height: 1.5;
+  color: var(--text-secondary);
+  max-width: 480px;
+}
+
+.rowRight {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  padding-left: 1rem;
+  flex-shrink: 0;
+}
+
+.priceMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.pricePrefix {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.priceValue {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.rowArrowLink {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  background-color: var(--bg-surface);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.serviceRow:hover .rowArrowLink,
+.rowActive .rowArrowLink {
+  border-color: var(--accent);
+  color: var(--accent);
+  background-color: var(--accent-subtle);
+  transform: translateX(4px);
+}
+
+.listFooter {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.allServicesLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 0.35rem;
+  transition: gap var(--transition-fast), color var(--transition-fast);
+}
+
+.allServicesLink:hover {
+  color: var(--accent);
+  gap: 0.8rem;
+}
+
+/* ---------------- Right Column: Image Preview ---------------- */
+.visualCol {
+  position: relative;
+  width: 100%;
+}
+
+.imageFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background-color: var(--bg-graphite);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border-light);
+}
+
+.imageLayer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.imageLayerActive {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.serviceImage {
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.imageFrame:hover .serviceImage {
+  transform: scale(1.025);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(14, 16, 20, 0.82) 0%,
+    rgba(14, 16, 20, 0.2) 40%,
+    transparent 80%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.metaPlaque {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: clamp(1.25rem, 2vw, 1.75rem);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.plaqueCategory {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+}
+
+.plaqueDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--accent);
+}
+
+.plaqueTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 2vw, 1.85rem);
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 1.15;
+}
+
+.plaqueDuration {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ---------------- Responsive Rules ---------------- */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .visualCol {
+    max-width: 580px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .serviceRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 0.5rem;
+  }
+
+  .rowRight {
+    width: 100%;
+    justify-content: space-between;
+    padding-left: 3rem;
+  }
+
+  .priceMeta {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
