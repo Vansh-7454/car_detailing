@@ -69,22 +69,22 @@ export default function HeroSection() {
   const [isExiting, setIsExiting] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Automatic coordinated 4-state cycling every ~2.7 seconds display + ~0.7s transition
+  // Automatic coordinated 4-state cycling every ~2.7s display + ~0.5s transition
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
 
     const scheduleNext = () => {
       timerRef.current = setTimeout(() => {
-        // Start text exit animation (fades out & moves slightly up)
+        // Fast synchronized text exit (200ms)
         setIsExiting(true);
 
-        // After 350ms exit, switch to next state and trigger text entrance (total transition ~700ms)
+        // Switch to next state simultaneously with image crossfade
         setTimeout(() => {
           setCurrentIndex((prev) => (prev + 1) % HERO_STATES.length);
           setIsExiting(false);
-        }, 350);
-      }, 2700);
+        }, 200);
+      }, 2500);
     };
 
     scheduleNext();
