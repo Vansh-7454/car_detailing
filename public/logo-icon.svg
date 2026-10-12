@@ -1,0 +1,34 @@
+<svg width="64" height="64" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer Swept Velocity Apex Arc -->
+  <path
+    d="M4 27C7 17 12 7 18 3C24 7 29 17 32 27"
+    stroke="#15171C"
+    stroke-width="1.75"
+    stroke-linecap="round"
+  />
+  <!-- Inner Parallel Velocity Ribbon -->
+  <path
+    d="M9 25C11.5 17 14.5 10 18 7C21.5 10 24.5 17 27 25"
+    stroke="#15171C"
+    stroke-width="1.25"
+    stroke-linecap="round"
+  />
+  <!-- Central Aerodynamic Apex Keel with Accent -->
+  <path
+    d="M18 11V29"
+    stroke="#C29B53"
+    stroke-width="1.5"
+    stroke-linecap="round"
+  />
+  <!-- Precision Velocity Node -->
+  <circle cx="18" cy="18" r="2.2" fill="#C29B53" />
+  <!-- Calibrated Aerodynamic Baseline Bar -->
+  <path
+    d="M12 29H24"
+    stroke="#15171C"
+    stroke-width="1.25"
+    stroke-linecap="round"
+  />
+  <!-- Crown Apex Accent Dot -->
+  <circle cx="18" cy="3" r="1.2" fill="#C29B53" />
+</svg>
