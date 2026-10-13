@@ -393,12 +393,14 @@
   border: 1px solid var(--border-dark);
   border-radius: var(--radius-sm);
   background-color: var(--bg-dark-card);
-  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .matrixHeader {
   display: grid;
   grid-template-columns: 2fr 1.2fr 1.2fr 1.2fr;
+  min-width: 760px;
   padding: 1.5rem 1.75rem;
   background-color: #12141A;
   border-bottom: 2px solid var(--border-dark);
@@ -431,6 +433,7 @@
 .matrixRow {
   display: grid;
   grid-template-columns: 2fr 1.2fr 1.2fr 1.2fr;
+  min-width: 760px;
   padding: 1.25rem 1.75rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   align-items: center;
@@ -558,40 +561,6 @@
   color: var(--text-inverse-secondary);
 }
 
-/* ---------------- Pricing Disclaimer Box ---------------- */
-.disclaimerWrapper {
-  margin-top: clamp(3rem, 5vw, 4.5rem);
-  max-width: 820px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.disclaimerBox {
-  background-color: rgba(255, 255, 255, 0.03);
-  border: 1px dashed rgba(255, 255, 255, 0.15);
-  border-radius: var(--radius-sm);
-  padding: 1.25rem 1.75rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.disclaimerHeading {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent-light);
-}
-
-.disclaimerText {
-  font-size: 0.85rem;
-  color: var(--text-inverse-secondary);
-  line-height: 1.6;
-}
-
 /* ---------------- Responsive Rules ---------------- */
 @media (max-width: 1024px) {
   .packagesGrid {
@@ -621,7 +590,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   .desktopMatrix {
     display: none;
   }

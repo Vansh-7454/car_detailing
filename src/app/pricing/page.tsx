@@ -291,9 +291,9 @@ export default function PricingPage() {
                       <span>Included</span>
                     </span>
                   ) : (
-                    <span className={styles.notIncluded}>— Not included</span>
+                    <span className={styles.notIncluded}>—</span>
                   )}
-                  {row.essentialNote && (
+                  {row.essentialNote && row.essentialNote.toLowerCase() !== "not included" && (
                     <span className={styles.cellNote}>{row.essentialNote}</span>
                   )}
                 </div>
@@ -306,9 +306,9 @@ export default function PricingPage() {
                       <span>Included</span>
                     </span>
                   ) : (
-                    <span className={styles.notIncluded}>— Not included</span>
+                    <span className={styles.notIncluded}>—</span>
                   )}
-                  {row.completeNote && (
+                  {row.completeNote && row.completeNote.toLowerCase() !== "not included" && (
                     <span className={styles.cellNote}>{row.completeNote}</span>
                   )}
                 </div>
@@ -321,9 +321,9 @@ export default function PricingPage() {
                       <span>Included</span>
                     </span>
                   ) : (
-                    <span className={styles.notIncluded}>— Not included</span>
+                    <span className={styles.notIncluded}>—</span>
                   )}
-                  {row.premiumNote && (
+                  {row.premiumNote && row.premiumNote.toLowerCase() !== "not included" && (
                     <span className={styles.cellNote}>{row.premiumNote}</span>
                   )}
                 </div>
@@ -423,18 +423,6 @@ export default function PricingPage() {
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
-
-          {/* Transparent Pricing Disclaimer Box */}
-          <div className={styles.disclaimerWrapper}>
-            <div className={styles.disclaimerBox}>
-              <span className={styles.disclaimerHeading}>
-                Honest Estimation Policy
-              </span>
-              <p className={styles.disclaimerText}>
-                All prices shown are starting prices for demonstration purposes. Final pricing depends on vehicle size, condition and selected service.
-              </p>
             </div>
           </div>
         </Container>

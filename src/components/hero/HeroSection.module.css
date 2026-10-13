@@ -34,8 +34,8 @@
 /* ---------------- Asymmetrical Editorial Composition ---------------- */
 .heroGrid {
   display: grid;
-  grid-template-columns: minmax(440px, 620px) 1fr;
-  gap: clamp(2.5rem, 4vw, 4.5rem);
+  grid-template-columns: minmax(420px, 540px) 1.12fr;
+  gap: clamp(2.5rem, 4vw, 4rem);
   align-items: center;
   min-height: 520px;
 }
@@ -235,11 +235,11 @@
 .vehicleStage {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: var(--radius-lg);
   background-color: var(--bg-graphite);
-  box-shadow: 0 24px 60px -15px rgba(20, 22, 28, 0.14);
+  box-shadow: 0 28px 70px -15px rgba(20, 22, 28, 0.16), 0 0 0 1px rgba(21, 23, 28, 0.05);
 }
 
 /* Layered Image Slides: Synchronized 500ms transition with cubic-bezier */
@@ -272,10 +272,10 @@
   pointer-events: none;
   z-index: 2;
   background: 
-    linear-gradient(to right, var(--bg-primary) 0%, rgba(250, 249, 246, 0.35) 7%, transparent 18%),
-    linear-gradient(to left, var(--bg-primary) 0%, rgba(250, 249, 246, 0.25) 5%, transparent 15%),
-    linear-gradient(to top, var(--bg-primary) 0%, rgba(250, 249, 246, 0.45) 5%, transparent 20%),
-    linear-gradient(to bottom, var(--bg-primary) 0%, rgba(250, 249, 246, 0.25) 4%, transparent 15%);
+    linear-gradient(to right, var(--bg-primary) 0%, rgba(250, 249, 246, 0.25) 3%, transparent 10%),
+    linear-gradient(to left, var(--bg-primary) 0%, rgba(250, 249, 246, 0.2) 2.5%, transparent 8%),
+    linear-gradient(to top, var(--bg-primary) 0%, rgba(250, 249, 246, 0.3) 3%, transparent 10%),
+    linear-gradient(to bottom, var(--bg-primary) 0%, rgba(250, 249, 246, 0.2) 2.5%, transparent 8%);
 }
 
 /* ---------------- MICRO-INTERACTION: SUBTLE LIGHT PASS REFLECTION ---------------- */
@@ -473,6 +473,7 @@
   }
 
   .vehicleStage {
+    aspect-ratio: 16 / 10;
     max-width: 760px;
     margin: 0;
   }
@@ -564,6 +565,11 @@
     font-size: clamp(2.25rem, 9vw, 2.65rem);
     line-height: 0.98;
     letter-spacing: -0.02em;
+  }
+
+  .titleDominant,
+  .titleAccent {
+    white-space: normal;
   }
 
   .heroTitleWrapper {

@@ -87,10 +87,9 @@
   color: var(--text-inverse-secondary);
 }
 
-/* ---------------- Oversized Decorative Section Number ---------------- */
 .oversizedNumber {
   position: absolute;
-  top: -2.8rem;
+  top: -3.2rem;
   left: -0.4rem;
   font-family: var(--font-serif);
   font-size: clamp(4.5rem, 8.5vw, 7.5rem);
@@ -106,11 +105,12 @@
 .align-center .oversizedNumber {
   left: 50%;
   transform: translateX(-50%);
+  top: -4.5rem;
 }
 
 .theme-graphite .oversizedNumber,
 .theme-dark .oversizedNumber {
-  color: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.03);
 }
 
 .hasSectionNumber .title,
@@ -180,10 +180,11 @@
   }
 
   .oversizedNumber {
-    top: -2rem;
-    font-size: 4rem;
+    top: -2.2rem;
+    font-size: clamp(3rem, 8vw, 4.5rem);
   }
-}
-.oversizedNumber{
-  top: -2rem;
+
+  .align-center .oversizedNumber {
+    top: -3.5rem;
+  }
 }
